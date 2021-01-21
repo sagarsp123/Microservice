@@ -1,0 +1,45 @@
+Database Name - EmployeeDB
+
+Employee Table Query:
+
+USE [EmployeeDB]
+GO
+
+/****** Object:  Table [dbo].[Employees]    ******/
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Employees](
+	[EmployeeID] [bigint] IDENTITY(1,1) NOT NULL,
+	[EmployeeName] [varchar](1000) NULL,
+	[Department] [varchar](1000) NULL,
+	[MailID] [varchar](1000) NULL,
+	[DOJ] [date] NULL
+) ON [PRIMARY]
+GO
+
+--------------------------------------------------------------------
+
+Department Table Query:
+
+USE [EmployeeDB]
+GO
+
+/****** Object:  Table [dbo].[Departments]  ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Departments](
+	[DepartmentID] [bigint] IDENTITY(1,1) NOT NULL,
+	[DepartmentName] [varchar](1000) NULL
+) ON [PRIMARY]
+GO
+
+
+
+

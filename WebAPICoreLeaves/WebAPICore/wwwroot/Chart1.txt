@@ -1,0 +1,46 @@
+Highcharts.chart('container', {
+  chart: {
+    type: 'column'
+  },
+  title: {
+    text: 'Control/Test Lift Chart'
+  },
+  subtitle: {
+    text: ''
+  },
+  yAxis: {
+        min: 0,
+        title: {
+            text: ''
+        }
+    },
+  xAxis: {
+categories: [
+  {
+      name: "Positive Lift",
+      categories: ["25%","50%"]
+   },
+   {
+      name: "Negative Lift",
+     categories: ["45%", "35%"]
+    },
+    {
+      name: "Low stat negattive lift",
+       categories: ["20%", "15%"]
+    }
+     ],
+  },
+  plotOptions: {
+    column: {
+      pointPadding: 0.2,
+      borderWidth: 0
+    }
+  },
+  series: [{
+    name: 'Control',
+    data: [25,null,45,null,20]
+  },{
+    name: 'Test',
+    data: [null,50,null,35,null,15]
+  }]
+});

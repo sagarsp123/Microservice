@@ -1,0 +1,192 @@
+ System.Windows.Forms.OpenFileDialog ofd = new System.Windows.Forms.OpenFileDialog();
+        string path1, path2;
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+       
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //clearing text from textboxes
+            txtfile1path.Text = String.Empty;
+            txtfile1Sentences.Text = String.Empty;
+
+            //Selecting file from the system
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                txtfile1path.Text = ofd.FileName;
+                path1 = ofd.FileName;
+                String[] file1Sentences = Readlines(path1);
+
+                //Checking for empty data
+               if(file1Sentences.Length < 1)
+                {
+                    MessageBox.Show("File is empty.Please select another file from the system", "Exception");
+                }
+               else
+                {
+                    //displaying sentences from the file
+                    for (int k = 0; k < file1Sentences.Length; k++)
+                    {
+                        txtfile1Sentences.Text += file1Sentences[k] + '.' + Environment.NewLine;
+                    }
+                }              
+            }
+       }
+               
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //clearing text from textboxes
+            txtfile2path.Text = String.Empty;
+            txtfile2Sentences.Text = String.Empty;
+
+            //Selecting file from the system
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                txtfile2path.Text = ofd.FileName;
+                path2 = ofd.FileName;
+                String[] file2Sentences = Readlines(path2);
+
+                //Checking for empty data
+                if (file2Sentences.Length < 1)
+                {
+                    MessageBox.Show("File is empty.Please select another file from the system", "Exception");
+                }
+                else
+                {
+                    //displaying sentences from the file
+                    for (int k = 0; k < file2Sentences.Length; k++)
+                    {
+                        txtfile2Sentences.Text += file2Sentences[k] + '.' + Environment.NewLine;
+                    }
+                }
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //clearing the text from textbox
+            compareResult.Text = String.Empty;
+
+            if (txtfile1path.TextLength < 1 || txtfile2path.TextLength < 1)
+            {
+                if (txtfile1path.TextLength < 1)
+                {
+                    MessageBox.Show("File 1 is not uploaded.Please upload another file from system", "Exception");
+                }
+                else
+                {
+                    if (txtfile2path.TextLength < 1)
+                    {
+                        MessageBox.Show("File 2 is not uploaded.Please upload another file from system", "Exception");
+                    }
+                }
+            }
+            else
+            {
+                if (txtfile1Sentences.TextLength < 1 || txtfile2Sentences.TextLength <1)
+                {
+                    if(txtfile1Sentences.TextLength < 1)
+                    {
+                        MessageBox.Show("File 1 is empty.Please upload another file from system before starting file comparison", "Exception");
+                        
+                    }
+                    else
+                    {
+                        if (txtfile2Sentences.TextLength < 1)
+                        {
+                            MessageBox.Show("File 2 is empty.Please upload another file from system before starting file comparison", "Exception");
+                        }
+                    }
+
+                }
+                else
+                {
+                    int num = 0;
+                    String[] file1 = Readlines(path1);
+                    String[] file2 = Readlines(path2);
+                    int size = 2 * (file1.Length * file2.Length);
+                    String[] matchsentence = new String[size];
+
+                    for (int i = 0; i < file1.Length; i++)
+                    {
+                        string sentence1 = Regex.Replace(file1[i], @"(|@|&|'|\(|\)|<|>|#)", "");                        
+                        for (int j = 0; j < file2.Length; j++)
+                        {
+                            string sentence2 = Regex.Replace(file2[j], @"(|@|&|'|\(|\)|<|>|#)", "");                            
+                            //Split phrases into word arrays
+                            String[] phrase1Words = sentence1.Split(' ');
+                            String[] phrase2Words = sentence2.Split(' ');
+                            //Find the intersection of the two arrays (find the matching words)
+                            var wordsInPhrase1and2 = phrase1Words.Intersect(phrase2Words);
+                            float matchwordcount = wordsInPhrase1and2.Count();
+                            float total_wordcount = phrase1Words.Count();
+                            
+                            //calculating percentage of matching words
+                            float percentageOfMatch = (matchwordcount / total_wordcount) * 100;
+                            if (percentageOfMatch > 60 && percentageOfMatch < 100)
+                            {
+                                matchsentence[num] = file1[i] + '.' + ' ' + file2[j] + '.' + percentageOfMatch.ToString("0.00")+" % of sentence matched\n";
+                                num++;
+                            }
+                            else
+                            {
+                                if (percentageOfMatch == 100)
+                                {                                   
+                                    matchsentence[num] = file1[i] + '.' + ' ' + file2[j] + '.' + "100% of sentence matched\n";
+                                    num++;
+                                }
+                                else
+                                {                                    
+                                    continue;
+                                }
+                            }                          
+
+                        }
+                    }
+
+                    //Displaying match results
+                    for (int k = 0; k < matchsentence.Length; k++)
+                    {
+                        compareResult.Text += matchsentence[k] + Environment.NewLine;
+                    }
+                }
+            }                           
+                    
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public static string[] Readlines(string p)
+        {
+            String line;            
+            line = File.ReadAllText(p);
+            line = line.Replace(System.Environment.NewLine, string.Empty);
+            String[] lines = line.Split('.');
+            String[] sentences = new String[lines.Length];
+            for (int i = 0; i < lines.Length; i++)
+            {
+                MatchCollection collection = Regex.Matches(lines[i].ToString(), @"[\S]+");
+                if (collection.Count == 1)
+                {
+                    lines[i] = lines[i] + '.' + lines[i + 1];
+                    sentences[i] = lines[i];
+                    i++;
+                }
+                else if (lines[i] == "")
+                {
+                    continue;
+                }
+                else
+                {
+                    sentences[i] = lines[i];
+                }
+            }
+            return sentences.Where(c => c != null).ToArray();
+
+        }

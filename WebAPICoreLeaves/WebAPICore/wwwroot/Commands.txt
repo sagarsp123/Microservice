@@ -1,0 +1,3 @@
+fastboot flash logo path-to-logo-file
+
+fastboot reboot

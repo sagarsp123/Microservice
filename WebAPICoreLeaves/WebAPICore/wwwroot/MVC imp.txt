@@ -1,0 +1,2 @@
+RedirectToAction("Edit", "Profile", new {id = 1, otherParam = "foo"});  
+This won't render view of another controller - but it will navigate to action of another controller (which is supposed to render view you are looking for).

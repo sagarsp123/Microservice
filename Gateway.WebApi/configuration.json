@@ -1,0 +1,257 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Employees",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62856
+        }
+      ],
+      "UpstreamPathTemplate": "/Employees",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EmplPortalKey",
+        "AllowedScopes": []
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/EmployeeOrg",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62856
+        }
+      ],
+      "UpstreamPathTemplate": "/EmployeeOrg",
+      "UpstreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EmplPortalKey",
+        "AllowedScopes": []
+      }
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/Employees/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62856
+        }
+      ],
+      "UpstreamPathTemplate": "/Employees/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EmplPortalKey",
+        "AllowedScopes": []
+      }
+
+    },
+    {
+      "DownstreamPathTemplate": "/api/Departments",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62856
+        }
+      ],
+      "UpstreamPathTemplate": "/Departments",
+      "UpstreamHttpMethod": [ "POST", "PUT", "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EmplPortalKey",
+        "AllowedScopes": []
+      }
+
+    },
+    {
+      "DownstreamPathTemplate": "/DepartmentOrg",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62856
+        }
+      ],
+      "UpstreamPathTemplate": "/DepartmentOrg",
+      "UpstreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EmplPortalKey",
+        "AllowedScopes": []
+      }
+
+    },
+    {
+      "DownstreamPathTemplate": "/api/Departments/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62856
+        }
+      ],
+      "UpstreamPathTemplate": "/Departments/{id}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EmplPortalKey",
+        "AllowedScopes": []
+      }
+
+    },
+    {
+      "DownstreamPathTemplate": "/api/EmployeeOrg/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62889
+        }
+      ],
+      "UpstreamPathTemplate": "/EmployeeOrg/{id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EmplPortalKey",
+        "AllowedScopes": []
+      }
+
+    },
+    {
+      "DownstreamPathTemplate": "/api/LeaveDetails",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62890
+        }
+      ],
+      "UpstreamPathTemplate": "/LeaveDetails",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EmplPortalKey",
+        "AllowedScopes": []
+      }
+
+    },
+    {
+      "DownstreamPathTemplate": "/api/LeaveDetails/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62890
+        }
+      ],
+      "UpstreamPathTemplate": "/LeaveDetails/{id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EmplPortalKey",
+        "AllowedScopes": []
+      }
+
+    },
+    {
+      "DownstreamPathTemplate": "/api/LeaveDetails/{id}/{leaveStatus}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62890
+        }
+      ],
+      "UpstreamPathTemplate": "/LeaveDetails/{id}/{leaveStatus}",
+      "UpstreamHttpMethod": [ "PUT" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EmplPortalKey",
+        "AllowedScopes": []
+      }
+
+    },
+    {
+      "DownstreamPathTemplate": "/api/file",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62890
+        }
+      ],
+      "UpstreamPathTemplate": "/file",
+      "UpstreamHttpMethod": [ "POST" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EmplPortalKey",
+        "AllowedScopes": []
+      }
+
+    },
+    {
+      "DownstreamPathTemplate": "/api/UserDetails",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62889
+        }
+      ],
+      "UpstreamPathTemplate": "/UserDetails",
+      "UpstreamHttpMethod": [ "POST", "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EmplPortalKey",
+        "AllowedScopes": []
+      }
+
+    },
+    {
+      "DownstreamPathTemplate": "/api/UserDetails/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62889
+        }
+      ],
+      "UpstreamPathTemplate": "/UserDetails/{id}",
+      "UpstreamHttpMethod": [ "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/UserDetails/{EmailID}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62889
+        }
+      ],
+      "UpstreamPathTemplate": "/UserDetails/{EmailID}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/EmployeeOrgn/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 62889
+        }
+      ],
+      "UpstreamPathTemplate": "/EmployeeOrgn/{id}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "EmplPortalKey",
+        "AllowedScopes": []
+      }
+
+    }
+
+
+
+
+  ],
+    "GlobalConfiguration": {
+      "BaseUrl": "http://localhost:44382"
+    }
+
+  }

@@ -33,7 +33,7 @@ steps:
         
 - task: VSBuild@1
   inputs:
-    solution: '**\*.sln'
+    solution: '**\*Microservice.WebApi.sln'
     vsVersion: '16.0'
     restoreNugetPackages: true
     arguments: '-c Release'

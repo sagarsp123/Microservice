@@ -251,7 +251,7 @@
 
   ],
     "GlobalConfiguration": {
-      "BaseUrl": "http://localhost:44382"
+      "BaseUrl": "https://dotnotproject.azurewebsites.net"
     }
 
   }

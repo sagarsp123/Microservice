@@ -3,8 +3,8 @@
     "windowsAuthentication": false, 
     "anonymousAuthentication": true, 
     "iisExpress": {
-      "applicationUrl": "http://localhost:51733",
-      "sslPort": 44382
+      "applicationUrl": "https://dotnotproject.azurewebsites.net/Gateway.WebApi",
+     
     }
   },
   "profiles": {
